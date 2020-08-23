@@ -3,10 +3,24 @@ import cv2
 import pygame 
 import numpy as np
 import time
-import os.path
-game_folder = os.path.dirname(__file__)
+import os
+import sys
+
+
+# determine if application is a script file or frozen exe
+if getattr(sys, 'frozen', False):
+    application_path = os.path.dirname(sys.executable)
+elif __file__:
+    application_path = os.path.dirname(__file__)
+
+#config_path = os.path.join(application_path, config_name)
+
+print('app path=',application_path)
+application_path=application_path.replace('\\','/')
+print('app path=',application_path)
+game_folder = application_path
 face_recog_folder=game_folder+'/'
-img_folder =game_folder+'/mygame/'
+img_folder =game_folder+'/'
 print("fuck off=",img_folder)
 fps=60
 file= open(game_folder+'/'+"highscore.txt",'r+')
